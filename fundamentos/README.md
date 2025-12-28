@@ -57,6 +57,58 @@ Agrupe dados relacionados
 ---
 
 ## 🎯 Sugestão de Aprendizado
+### 9️⃣ **Callbacks** `callbacks/`
+Funções passadas como argumentos
+- Callback básico
+- Callbacks com sucesso/erro
+- Callback Hell (problema)
+- Quando usar vs Promises
+
+### 🔟 **Promises** `promises/`
+Trabalhe com operações assincrónicas
+- Estados: Pending, Fulfilled, Rejected
+- .then(), .catch(), .finally()
+- Promise.all(), Promise.race()
+- Encadeamento de Promises
+
+### 1️⃣1️⃣ **async/await** `async-await/`
+Sintaxe moderna para código assincrónico
+- Função async
+- Palavra-chave await
+- Try/catch em assincronismo
+- Paralelo vs Sequencial
+
+### 1️⃣2️⃣ **Tratamento de Erros** `tratamento-erros/`
+Lide com exceções e erros
+- try/catch/finally
+- throw (lançar erro)
+- Erro customizado
+- Tratamento em async/await
+
+### 1️⃣3️⃣ **Módulos** `modulos/`
+Organize código em arquivos
+- CommonJS (require/module.exports)
+- ES Modules (import/export)
+- Diferença entre os padrões
+- Estrutura de projetos
+
+### 1️⃣4️⃣ **Conceitos Node.js** `conceitos-nodejs/`
+JavaScript fora do navegador
+- Runtime vs Navegador
+- Event Loop (conceito fundamental)
+- __dirname, __filename, process
+- File System, HTTP, Modules
+
+### 1️⃣5️⃣ **JSON** `json/`
+Trabalhe com dados estruturados
+- JSON.stringify()
+- JSON.parse()
+- Validação de JSON
+- Casos de uso práticos
+
+---
+
+## 🎯 Sugestão de Aprendizado
 
 ### 👶 Iniciante (Comece por aqui!)
 Ordem recomendada:
@@ -68,20 +120,36 @@ Ordem recomendada:
 6. **Funções** - Organize seu código
 7. **Arrays** - Trabalhe com listas
 8. **Objetos** - Organize dados complexos
+9. **Callbacks** - Primeira forma de assincronismo
+10. **Promises** - Melhor forma de assincronismo
+11. **async/await** - Forma moderna e legível
+12. **Tratamento de Erros** - Trate exceções
+13. **JSON** - Trabalhe com dados estruturados
+14. **Módulos** - Organize projetos maiores
+15. **Conceitos Node.js** - JavaScript no servidor
 
 ### 🟡 Intermediário
 - Combine vários módulos em pequenos projetos
 - Foque em **Arrays** e **Objetos** para processamento de dados
 - Use **Funções** como blocos construtores
 - Pratique **Desestruturação** em Objetos
+- Trabalhe com **Promises** e **async/await**
+- Implemente **tratamento de erros** robusto
+- Crie **módulos** reutilizáveis
+- Exporte/importe dados em **JSON**
 
 ### 🔴 Avançado
 - Padrões avançados com funções (closures, currying)
 - Métodos complexos de array (reduce com objetos)
 - Orientação a objetos com classes
 - Composição de funções
+- Callbacks versus Promises versus async/await
+- Tratamento de erros em cascata
+- Padrões de módulos (Singleton, Factory, etc)
+- Event Loop profundo
+- Streams e processamento de arquivos
+- APIs e requisições HTTP
 
----
 
 ## 📊 Estrutura de Cada Módulo
 
@@ -200,8 +268,30 @@ FUNDAMENTOS DE JAVASCRIPT
       ├─ Criação
       ├─ Acesso
       └─ Desestruturação
+├─ ASSINCRONISMO (Como lidar com operações demoradas)
+│  ├─ Callbacks (padrão antigo)
+│  ├─ Promises (padrão intermediário)
+│  ├─ async/await (padrão moderno)
+│  └─ Event Loop (conceito fundamental)
+│
+├─ SEGURANÇA (Como tratar erros)
+│  ├─ try/catch/finally
+│  ├─ throw (lançar erro)
+│  ├─ Erros customizados
+│  └─ Tratamento em assincronismo
+│
+├─ ORGANIZAÇÃO (Como estruturar projetos)
+│  ├─ Módulos (CommonJS e ES Modules)
+│  ├─ Separação de responsabilidades
+│  ├─ Imports e Exports
+│  └─ Padrões de módulos
+│
+└─ DADOS ESTRUTURADOS (Como trabalhar com APIs)
+  ├─ JSON (stringify/parse)
+  ├─ Validação de dados
+  ├─ Transformação de formatos
+  └─ Conceitos Node.js
 ```
-
 ---
 
 ## 📝 Exercício Integrador
@@ -216,6 +306,28 @@ const usuarios = [
 ];
 
 // ❷ FUNÇÕES + OBJETOS + DESESTRUTURAÇÃO
+// ❷ FUNÇÕES + ASYNC/AWAIT + TRATAMENTO DE ERRO
+async function buscarDadosAPI() {
+  try {
+    // Simula requisição
+    const response = await Promise.resolve({
+      usuarios: usuarios,
+      status: "sucesso"
+    });
+    
+    // ❸ JSON - Serializar dados
+    const json = JSON.stringify(response);
+    console.log("Dados em JSON:", json);
+    
+    // ❹ PROMISES + MÓDULOS - Se exportasse
+    // export default { usuarios };
+    
+    return response;
+  } catch (erro) {
+    console.error("Erro ao buscar dados:", erro);
+    return null;
+  }
+}
 function aplicarAumento(usuario, percentual) {
   const { nome, salario } = usuario;
   const novoSalario = salario * (1 + percentual);
@@ -233,6 +345,12 @@ const usuariosComatual = usuarios.map(user => {
 // ❹ LAÇOS + ACESSO A OBJETOS
 usuariosComatual.forEach(user => {
   console.log(`${user.nome}: R$ ${user.salario}`);
+
+// Executar
+buscarDadosAPI().then(resultado => {
+  console.log("Processamento concluído");
+});
+```
 });
 ```
 
@@ -279,3 +397,21 @@ R: Faça projetos pequenos. Uma calculadora, lista de tarefas, conversor de moed
 ---
 
 **Bom aprendizado! 🚀**
+Depois de dominar estes fundamentos, você está pronto para:
+
+### Nível Intermediário
+- ✅ **DOM Manipulation** - Interagir com páginas web
+- ✅ **APIs e Fetch** - Buscar dados do servidor
+- ✅ **Express.js** - Framework Node.js para servidores
+- ✅ **Classes Avançadas** - Herança e polimorfismo
+- ✅ **Padrões de Design** - Observer, Factory, Singleton
+- ✅ **Testing** - Testes unitários e integração
+- ✅ **Debugging** - Ferramentas de debug
+
+### Nível Avançado
+- 🚀 **Banco de Dados** - MongoDB, PostgreSQL
+- 🚀 **TypeScript** - Tipagem estática
+- 🚀 **React/Vue/Angular** - Frameworks frontend
+- 🚀 **GraphQL** - Alternativa a REST APIs
+- 🚀 **Microserviços** - Arquitetura escalável
+- 🚀 **DevOps** - Deploy e CI/CD
